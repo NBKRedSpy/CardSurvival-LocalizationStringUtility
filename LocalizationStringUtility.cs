@@ -55,7 +55,7 @@ namespace LocalizationUtilities
 
             //----Set LocalizationKey
             const string prefix = "T-";
-            string key = prefix + Convert.ToBase64String(Sha1.ComputeHash(UTF8Encoding.UTF8.GetBytes(localizedString.DefaultText)));
+            string key = prefix + Convert.ToBase64String(Sha1.ComputeHash(UTF8Encoding.UTF8.GetBytes(localizedString.DefaultText.Trim())));
 
             localizedString.LocalizationKey = key;
 
