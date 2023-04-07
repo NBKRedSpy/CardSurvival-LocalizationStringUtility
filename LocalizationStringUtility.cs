@@ -43,6 +43,9 @@ namespace LocalizationUtilities
         /// Generates and sets a localization key based on a hash of the DefaultText.
         /// If there is a Localization file loaded, the DefaultText will be set to that key.
         /// </summary>
+        /// <remarks>
+        /// This is the same hash as used by CardSurvival-Localization as there can be cross mod usage.
+        /// </remarks>
         /// <param name="localizedString"></param>
         public static void SetLocalizationInfo(this ref LocalizedString localizedString)
         {
