@@ -2,22 +2,54 @@ TODO:  Finish the docs.
 Finish showing usage, 
 Show converting pipe output to SimpEn.csv
 
+# Quick Notes
+
+This utility is used to allow DLL based mods to support loading translations from a Localization/SimpEn.csv file.  
+
+## Example
+```csharp
+val2.CardDescription.DefaultText = cardDescription;
+//New line
+val2.CardDescription.SetLocalizationInfo();
+```
+
+## Description
+The new line calls an extension called SetLocalizationInfo().  
+It will generate a SHA1 key based off of the LocalizedString.DefaultText, and set the LocalizedString.LocalizationKey to the new key.  
+
+If there is a key that matches the generated key in the a ```[mod's directory]/Localization/SimpEn.csv``` file, then the target's LocalizedString.DefaultText will be set to that key's translation.
+
+If the mod's config file has the LogCardInfo value set to true, the text and the new key will be output to the BepInEx console.  This output can then be used to create the key/translation pair for the ./Localization/SimpEn.csv file.  
+
+See below on how to include and use the utility class.
+
+# Mod Loader Compatibility
+The ./Localization/SimpEn.csv is the same format, name, and location as a ModLoader based mod's translation file.  Translations created from this utility can be added to an existing SimpEn.csv without affecting the ModLoader mod in the same folder.
+
+
+# **Work in Progress Documentation.**
 
 # Basic Overview
-Only for mods that create cards without Localization Keys.
+Only for mods that create cards without Localization Keys.  
+
+**todo:** Change this.  By default the game doesn't support loading DefaultText after the startup so only mods that also happen to have a ModLoader mod in the same folder would fix up translation text.
+
+Need the utility to be able to force using the existing Localization key.
 
 It is preferred to change the mod's code to use a localization key, but some mods create cards via generation, so this is just easier than possibly messing up the original code.
 
-Generates hash based localization keys
+Generates hash based localization keys  
 Exports keys to BepInEx output log.
 
 Keys can then be translated and saved to <mod's folder>/Localization/SimpEn.csv.
-    Format is Key,English,Chinese
+The format is Key,English,Chinese
 
 If SimpEn.csv is loaded and the game is in English mode, the DefaultText will be set to the English translation.
 
 # Draft Doc
 ## Draft Examples:
+
+Creating the Mod's config file to include the LogCardInfo setting to export the key/text combination.
 
 Initing in BaseUnityPlugin.Awake():
 ```csharp
@@ -31,8 +63,9 @@ Initing in BaseUnityPlugin.Awake():
 
 ## Using
 
-Only use if there is not a LocalizationKey set.  
-Add a .SetLocalizationInfo(); to the object that does not have a LocalizationKey set.
+Fix this text.  Currently the utility always generates a key and overwrites the existing LocalizationKey.
+~~Only use if there is not a LocalizationKey set.~~  
+~~Add a .SetLocalizationInfo(); to the object that does not have a LocalizationKey set.~~
 
 ```csharp
 		val2.CardDescription.DefaultText = cardDescription;
