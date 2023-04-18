@@ -1,6 +1,8 @@
-*Important TODO:*  Need to change to use the Game's internal localization as well as supporting existing keys from a translation file.  
 
-TODO:  Finish the docs.
+# **TODO:**
+Change code to use the Game's internal localization dictionary.
+	Add HarmonyPatch to include the loader.
+Finish the docs.
 Add notes about mods that use both a .DLL and ModLoader.  ModLoader can handle applying the translation file.
 Finish showing usage, 
 Show converting pipe output to SimpEn.csv
