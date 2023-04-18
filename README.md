@@ -1,6 +1,7 @@
 
 # **TODO:**
 * Change code to use the Game's internal localization dictionary.
+	* The code works, but there is already functionality to load the translation, might as well use it to be more compatible with other mods.
 	* Add HarmonyPatch to include the loader.
 * Finish the docs.
 * Add notes about mods that use both a .DLL and ModLoader.  ModLoader can handle applying the translation file.
